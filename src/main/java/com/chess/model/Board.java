@@ -52,7 +52,7 @@ public class Board
 	
 	public boolean isPlayerOnCheck(Player player)
 	{
-		
+		return checkIfPieceCanBeKilled(player., cellOccupyBlockers, player)
 	}
 	
 	public boolean checkIfPieceCanBeKilled(Piece targetPiece,List<PieceCellOccupyBlocker> cellOccupyBlockers,Player player)

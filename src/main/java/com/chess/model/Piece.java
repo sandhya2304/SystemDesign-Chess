@@ -33,4 +33,19 @@ public class Piece
 	}
 	
 	
+	public void killPieceInCell()
+	{
+		
+	}
+	
+	public List<Cell> nextPossibleCells()
+	{
+		
+	}
+	
+	public boolean isPieceFromSamePlayer()
+	{
+		
+	}
+	
 }
