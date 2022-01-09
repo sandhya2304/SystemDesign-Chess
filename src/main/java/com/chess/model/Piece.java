@@ -1,7 +1,10 @@
 package com.chess.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.chess.conditions.PieceCellOccupyBlocker;
+import com.chess.exception.InvalidMoveException;
 import com.chess.moves.PossibleMovesProvider;
 
 public class Piece 
@@ -22,24 +25,64 @@ public class Piece
 		this.pieceType = pieceType;
 	}
 	
+	public boolean isKilled() {
+		return isKilled;
+	}
+
+	public Color getColor() {
+		return color;
+	}
+
+	public List<PossibleMovesProvider> getMovesProviders() {
+		return movesProviders;
+	}
+
+
+	public Integer getNumMoves() {
+		return numMoves;
+	}
+
+	public PieceType getPieceType() {
+		return pieceType;
+	}
+
+	public Cell getCurrentCell() {
+		return currentCell;
+	}
+
 	public void killIt()
 	{
 		this.isKilled = true;
 	}
 	
-	public void move()
+	public void move(Player player,Cell toCell,Board board,List<PieceCellOccupyBlocker> additionalBlockers)
 	{
+		if(isKilled)
+		{
+			throw new InvalidMoveException();
+		}		
+		
+		List<Cell> nextPossibleCells = 
+		
+		
 		
 	}
-	
-	
+		
 	public void killPieceInCell()
 	{
 		
+		
+		
 	}
 	
-	public List<Cell> nextPossibleCells()
+	public List<Cell> nextPossibleCells(Board board,List<PieceCellOccupyBlocker> additionalBlockers,Player player)
 	{
+		List<Cell> result = new ArrayList<>();
+		for(PossibleMovesProvider movesProvider:this.movesProviders)
+		{
+			
+		}
+		
 		
 	}
 	

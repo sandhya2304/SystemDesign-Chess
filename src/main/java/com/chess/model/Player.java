@@ -16,7 +16,7 @@ public abstract class Player
 	{
 		for(Piece piece:getPieces())
 		{
-			if(piece.g)
+			if(piece.get)
 		}
 	}
 }
