@@ -4,6 +4,9 @@ import java.util.List;
 
 import com.chess.conditions.PieceCellOccupyBlocker;
 
+import static com.chess.conditions.PieceCellOccupyBlockerFactory.kingCheckEvaluationBlockers;
+
+
 public class Board 
 {
 	
@@ -15,13 +18,11 @@ public class Board
 		this.boardSize = boardSize;
 		this.cells = cells;
 	}
-	
-	
+		
 	public int getBoardSize() {
 		return boardSize;
 	}
-	
-	
+		
 	// helper methods
 	
 	public Cell getLeftCell(Cell cell)
@@ -60,7 +61,7 @@ public class Board
 	
 	public boolean isPlayerOnCheck(Player player)
 	{
-		return checkIfPieceCanBeKilled(player.getPiece(PieceType.KING), cellOccupyBlockers, player);
+		return checkIfPieceCanBeKilled(player.getPiece(PieceType.KING), kingCheckEvaluationBlockers(), player);
 	}
 	
 	public boolean checkIfPieceCanBeKilled(Piece targetPiece,List<PieceCellOccupyBlocker> cellOccupyBlockers,Player player)

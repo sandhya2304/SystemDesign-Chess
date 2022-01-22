@@ -69,16 +69,26 @@ public class Piece
 			throw new InvalidMoveException();
 		}		
 		
-		List<Cell> nextPossibleCells = 
+		List<Cell> nextPossibleCells = nextPossibleCells(board, additionalBlockers, player);
+		if(!nextPossibleCells.contains(toCell))
+		{
+			throw new InvalidMoveException();
+		}
 		
-		
+		killPieceInCell(toCell);
+		this.currentCell.setCurrentPiece(null);
+		this.currentCell = toCell;
+		this.currentCell.setCurrentPiece(this);
+		this.numMoves++;
 		
 	}
 		
-	public void killPieceInCell()
+	public void killPieceInCell(Cell targetCell)
 	{
-		
-		
+		if(targetCell.getCurrentPiece() != null)
+		{
+			targetCell.getCurrentPiece().killIt();
+		}
 		
 	}
 	

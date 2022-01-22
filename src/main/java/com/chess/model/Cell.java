@@ -17,6 +17,10 @@ public class Cell
 		this.y = y;
 	}
 	
+	public void setCurrentPiece(Piece currentPiece) {
+		this.currentPiece = currentPiece;
+	}
+	
 	
    public Piece getCurrentPiece() {
 	return currentPiece;

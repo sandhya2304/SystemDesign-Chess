@@ -1,5 +1,12 @@
 package com.chess.moves;
 
-public class VerticalMoveDirection {
 
+
+
+
+public enum VerticalMoveDirection 
+{
+      UP,
+      DOWN,
+      BOTH
 }
