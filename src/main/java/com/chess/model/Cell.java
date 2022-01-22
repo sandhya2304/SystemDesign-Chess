@@ -18,7 +18,9 @@ public class Cell
 	}
 	
 	
-	
+   public Piece getCurrentPiece() {
+	return currentPiece;
+}	
 	
 	public int getX() {
 		return x;
@@ -44,7 +46,6 @@ public class Cell
 	public void setY(int y) {
 		this.y = y;
 	}
-
 
 
 

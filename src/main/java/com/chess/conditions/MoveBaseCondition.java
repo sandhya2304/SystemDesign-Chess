@@ -1,4 +1,4 @@
-package com.chess.moves;
+package com.chess.conditions;
 
 import com.chess.model.Piece;
 

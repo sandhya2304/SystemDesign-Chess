@@ -1,5 +1,15 @@
 package com.chess.model;
 
-public class PieceType {
+
+
+
+public enum PieceType 
+{
+	KING,
+	QUEEN,
+	ROOK,
+	BISHOP,
+	KNIGHT,
+	PAWN
 
 }

@@ -16,6 +16,14 @@ public class Board
 		this.cells = cells;
 	}
 	
+	
+	public int getBoardSize() {
+		return boardSize;
+	}
+	
+	
+	// helper methods
+	
 	public Cell getLeftCell(Cell cell)
 	{
 		return getCellAtLocation(cell.getX(), cell.getY() - 1);
@@ -52,14 +60,28 @@ public class Board
 	
 	public boolean isPlayerOnCheck(Player player)
 	{
-		return checkIfPieceCanBeKilled(player., cellOccupyBlockers, player)
+		return checkIfPieceCanBeKilled(player.getPiece(PieceType.KING), cellOccupyBlockers, player);
 	}
 	
 	public boolean checkIfPieceCanBeKilled(Piece targetPiece,List<PieceCellOccupyBlocker> cellOccupyBlockers,Player player)
 	{
-		
-		
-		
+		for(int i=0;i<getBoardSize();i++)
+		{
+		      for(int j=0;j<getBoardSize();j++)
+		      {
+		    	  Piece currentPiece = getCellAtLocation(i, j).getCurrentPiece();
+		    	  if(currentPiece != null || !currentPiece.isPieceFromSamePlayer(targetPiece))
+		    	  {
+		    		   List<Cell> nextPossibleCells = currentPiece.nextPossibleCells(this, cellOccupyBlockers, player);
+		    		   
+		    		   if(nextPossibleCells.contains(targetPiece.getCurrentCell()))
+		    		   {
+		    			   return true;
+		    		   }
+		    	  }
+		      }
+		}
+		return false;
 	}
 
 }

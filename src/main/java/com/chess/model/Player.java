@@ -2,10 +2,14 @@ package com.chess.model;
 
 import java.util.List;
 
+import com.chess.exception.PieceNotFoundException;
+
 public abstract class Player 
 {
 	
 	List<Piece> pieces;
+	
+	abstract public PlayerMove makeMove();
 	
 	public List<Piece> getPieces() {
 		return pieces;
@@ -16,7 +20,11 @@ public abstract class Player
 	{
 		for(Piece piece:getPieces())
 		{
-			if(piece.get)
+			if(piece.getPieceType() == pieceType)
+			{
+				return piece;
+			}
 		}
+		throw new PieceNotFoundException();
 	}
 }

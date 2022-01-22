@@ -3,7 +3,9 @@ package com.chess.moves;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.chess.conditions.MoveBaseCondition;
 import com.chess.conditions.PieceCellOccupyBlocker;
+import com.chess.conditions.PieceMoveFurtherCondition;
 import com.chess.model.Board;
 import com.chess.model.Cell;
 import com.chess.model.Piece;
@@ -28,6 +30,10 @@ public abstract class PossibleMovesProvider
 		this.baseBlocker = baseBlocker;
 	}
 	
+	protected abstract List<Cell> possibleMovesAsPerCurrentType(Piece piece,Board board,
+		       List<PieceCellOccupyBlocker> additionalBlockers,Player player);
+
+	
 	public List<Cell> possibleMoves(Piece piece,Board board,List<PieceCellOccupyBlocker> additionalBlockers,Player player)
 	{
 		
@@ -38,10 +44,7 @@ public abstract class PossibleMovesProvider
 		return null;
 	}
 	
-	protected abstract List<Cell> possibleMovesAsPerCurrentType(Piece piece,Board board,
-			       List<PieceCellOccupyBlocker> additionalBlockers,Player player);
-	
-	
+
 	protected List<Cell> findAllNextMoves(Piece piece,NextCellProvider nextCellProvider,Board board,
 			List<PieceCellOccupyBlocker> cellOccupyBlockers,Player player)
 	{

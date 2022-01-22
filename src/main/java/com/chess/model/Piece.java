@@ -7,6 +7,9 @@ import com.chess.conditions.PieceCellOccupyBlocker;
 import com.chess.exception.InvalidMoveException;
 import com.chess.moves.PossibleMovesProvider;
 
+import static com.helpers.ListHelpers.removeDuplicates;
+
+
 public class Piece 
 {
 	
@@ -49,6 +52,10 @@ public class Piece
 	public Cell getCurrentCell() {
 		return currentCell;
 	}
+	
+	public void setCurrentCell(Cell currentCell) {
+		this.currentCell = currentCell;
+	}
 
 	public void killIt()
 	{
@@ -80,14 +87,18 @@ public class Piece
 		List<Cell> result = new ArrayList<>();
 		for(PossibleMovesProvider movesProvider:this.movesProviders)
 		{
-			
+			List<Cell> cells = movesProvider.possibleMoves(this, board, additionalBlockers, player);
+			 if(cells != null)		
+			 {
+				 result.addAll(cells);
+			 }
 		}
-		
-		
+		return removeDuplicates(result);  //helper class methods
 	}
 	
-	public boolean isPieceFromSamePlayer()
+	public boolean isPieceFromSamePlayer(Piece piece)
 	{
+		return piece.getColor().equals(this.color);
 		
 	}
 	
