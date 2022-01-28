@@ -11,6 +11,10 @@ public class Cell
 	
 	private Piece currentPiece;
 	
+	public Cell() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Cell(int x, int y) {
 		super();
 		this.x = x;
